@@ -1,2 +1,2 @@
-# iks-lab
- Sample app for Kubernetes IBMCloud
+# showcase
+ Sample app for showcase demo
