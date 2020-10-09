@@ -1,5 +1,5 @@
 FROM python:3.8.6-alpine
-RUN pip install -r requirements.txt
+RUN pip install FLask
 CMD ["python","app.py"]
-COPY app.py /app.py
+COPY flask-app/app.py /app.py
 EXPOSE 5000
