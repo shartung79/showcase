@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    name = request.args.get("name", "world")
+    name = request.args.get("name", "day")
     return f"SHOWCASE-LAB: Hello perfect {escape(name)}!"
 
 if __name__ == "__main__":
