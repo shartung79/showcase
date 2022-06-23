@@ -1,0 +1,42 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: showcase
+    app.kubernetes.io/component: showcase
+    app.kubernetes.io/instance: showcase
+  name: showcase
+  namespace: my-test
+spec:
+  failedBuildsHistoryLimit: 5
+  output:
+    to:
+      kind: ImageStreamTag
+      name: showcase:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: flask-app
+    git:
+      ref: demo
+      uri: https://github.com/shartung79/showcase.git
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: python:3.8-ubi8
+        namespace: openshift
+    type: Source
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: Qb6PItnoS-tJruU3jX9Z
+    type: GitHub
+  - generic:
+      secret: nMEIc7eRBIANiEYvKRH6
+    type: Generic
+  - type: ConfigChange
+  - imageChange:
+    type: ImageChange
